@@ -47,6 +47,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "karma-junit-reporter": "^2.0.1",
+    "karma-sonarqube-unit-reporter": "0.0.23",
     "protractor": "~5.4.3",
     "puppeteer": "^3.0.2",
     "sonarqube-scanner": "2.7.0",
