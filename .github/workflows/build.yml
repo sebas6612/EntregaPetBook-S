@@ -1,10 +1,13 @@
 name: SonarCloud Scan
 
-on: [push]
+on:
+  push:
+  branches:
+    - master
 
 jobs:
   build:
-
+    name: SonarCloud Scan
     runs-on: ubuntu-latest
 
     strategy:
@@ -14,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     with:
-        fetch-depth: 0
+      fetch-depth: 0
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
