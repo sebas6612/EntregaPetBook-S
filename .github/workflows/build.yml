@@ -50,6 +50,12 @@ jobs:
           name: code-coverage-report
           path: coverage/
 
-      - uses: actions/checkout@v1
-      - name: Code_Coverage_AWS_S3
-        run: bash scripts/pipeline/release.sh "sonarcloud-reports" "coverage" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} pet-book-$(Build.BuildId).zip
+      - uses: actions/checkout@master
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ACCESS_SECRET }}
+          SOURCE_DIR: 'coverage/' 
