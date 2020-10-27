@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests
         run: node ./node_modules/@angular/cli/bin/ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
-        
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -49,3 +49,7 @@ jobs:
         with:
           name: code-coverage-report
           path: coverage/
+
+      - uses: actions/checkout@v1
+      - name: Code_Coverage_AWS_S3
+        run: bash scripts/pipeline/release.sh "sonarcloud-reports" "coverage" ${{secret.AWS_Access_Key}} ${{secret.AWS_Access_Secret}} pet-book-$(Build.BuildId).zip
