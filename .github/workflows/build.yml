@@ -31,7 +31,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Resolving dependencies
         run: npm ci
-      - run: npm run lint
       - name: Build the code
         run: npm run build --prod
       - name: Run tests
