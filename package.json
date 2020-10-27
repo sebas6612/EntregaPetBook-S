@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sonar": "sonarqube-scanner"
+    "sonar": "sonar-scanner"
   },
   "private": true,
   "dependencies": {
