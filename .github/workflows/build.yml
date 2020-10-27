@@ -28,12 +28,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Resolving dependencies
-        run: npm ci
+        run: npm install
       - name: Build the code
-        run: npm run build --prod
-      - run: node ./node_modules/@angular/cli/bin/ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessCI
+        run: npm run build --if-present
+      - name: Coverage
+        run: node ./node_modules/@angular/cli/bin/ng test --code-coverage --no-watch --no-progress --browsers=ChromeHeadlessCI
+
       - name: Run tests
         run: node ./node_modules/@angular/cli/bin/ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
+        
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -45,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
-          path: coverage/index.html
+          path: coverage/
