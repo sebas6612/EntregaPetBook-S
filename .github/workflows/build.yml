@@ -31,8 +31,8 @@ jobs:
         run: npm ci
       - name: Build the code
         run: npm run build --prod
+      - run: node ./node_modules/@angular/cli/bin/ng test --code-coverage
       - name: Run tests
-        run: node ./node_modules/@angular/cli/bin/ng test --code-coverage
         run: node ./node_modules/@angular/cli/bin/ --no-watch --no-progress --browsers=ChromeHeadlessCI
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
