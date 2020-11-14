@@ -21,9 +21,8 @@ steps:
   inputs:
     SonarCloud: 'sonarcloud'
     organization: 'sebas6612'
-    scannerMode: 'MSBuild'
-    projectKey: 'pet-book-s'
-    projectName: 'pet-book-s'
+    scannerMode: 'CLI'
+    configMode: 'file'
     
 - task: SonarCloudAnalyze@1
 
