@@ -54,7 +54,7 @@ steps:
     containerRegistry: 'azure-devops-docker-hub'
     repository: 'pet-book-s'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: 'Dockerfile'
     tags: Azure-DevOps
 
 - task: PublishBuildArtifacts@1
