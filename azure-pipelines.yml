@@ -47,7 +47,7 @@ steps:
   displayName: Login to ACR
   inputs:
     command: login
-    containerRegistry: dockerRegistryServiceConnection1
+    containerRegistry: azure-devops-docker-hub
 - task: Docker@2
   displayName: 'Build the Docker image and push'
   inputs:
