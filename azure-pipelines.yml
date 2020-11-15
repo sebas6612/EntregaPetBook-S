@@ -52,11 +52,10 @@ steps:
 - task: Docker@2
   displayName: 'Build the Docker image and push'
   inputs:
-    imageName: 'sebas6612/pet-book-s:$(Build.BuildId)'
     containerRegistry: 'azure-devops-docker-hub'
-    repository: 'pet-book-s'
+    repository: 'sebas6612/pet-book-s'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: Azure-DevOps
+    tags: 'Azure-DevOps'
 
 - task: PublishBuildArtifacts@1
