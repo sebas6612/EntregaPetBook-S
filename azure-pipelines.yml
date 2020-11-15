@@ -13,11 +13,14 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --prod
+    ng build --prod  
+  displayName: 'npm install and build'
+
+- script: |
     npm run test-ci   
     ls /coverage
-    ls     
-  displayName: 'npm install, unitTest and build'
+    ls
+  displayName: 'Run Tests'  
 
 - task: SonarCloudPrepare@1
   inputs:
@@ -39,5 +42,12 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- task: Docker@2
+  displayName: 'Build the Docker image and push'
+  inputs:
+    containerRegistry: 'azure-devops-docker-hub'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
 - task: PublishBuildArtifacts@1
